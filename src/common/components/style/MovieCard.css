@@ -1,0 +1,50 @@
+.movie-card img {
+    cursor: pointer;
+}
+
+.movie-card img {
+    height: 100%;
+    min-width: 100%;
+}
+
+.movie-badge {
+    color: #fff;
+    min-width: 40px;
+    padding: .3em calc(.8vw + 8px);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.badge-quality-hd {
+    background-color: #48A242;
+}
+
+
+.badge-quality-sd {
+    background-color: #D64CA1;
+}
+
+.badge-quality-hdcam {
+    background-color: #D0801B;
+}
+
+.badge-quality-cam {
+    background-color: #D11110;
+}
+
+.badge-quality-trailer {
+    background-color: #771ECE;
+}
+
+.badge-type-movie {
+    background-color: #2759D7;
+}
+
+.badge-type-film-seri {
+    background-color: #DE6613;
+}
+
+.badge-eps {
+    background-color: #7EAEEC;
+}
