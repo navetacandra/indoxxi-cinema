@@ -1,0 +1,16 @@
+.page-selector {
+    cursor: pointer;
+    color: #fff;
+    max-width: 40px !important;
+    padding: .1em calc(.1vw + 2px);
+    border-radius: 8px;
+    background-color: #52504f;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.page-selector.active {
+    background-color: #171010;
+}

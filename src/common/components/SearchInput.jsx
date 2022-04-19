@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function SearchInput() {
@@ -6,6 +6,14 @@ function SearchInput() {
 
     const { pathname } = useLocation();
     let _keyword_ = pathname.replace('/search/', '').split('/')[0];
+
+    useEffect(() => {
+        if(pathname.startsWith('/search')) {
+            document.querySelector('#search-input').value = decodeURI(_keyword_);
+        } else {
+            document.querySelector('#search-input').value = '';
+        }
+    }, [pathname]);
 
     function Search() {
         let keyword = document.querySelector('#search-input').value.split('/')[0];
@@ -28,7 +36,7 @@ function SearchInput() {
             <div className="d-flex justify-content-center mt-2">
                 <div className="col-8">
                     <div className="input-group mb-3">
-                        <input id="search-input" type="text" className="form-control" onKeyUp={e => handleKeyUp(e)} defaultValue={decodeURI(_keyword_)} placeholder="Search.." />
+                        <input id="search-input" type="text" className="form-control" onKeyUp={e => handleKeyUp(e)} placeholder="Search.." />
                         <button className="btn btn-outline-secondary" onClick={Search} type="button" id="button-addon1">Search</button>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
-import CountryListTable from './CountryListTable'
-import GenreListTable from './GenreListTable'
+import CountryListTable from './partials/CountryListTable'
+import GenreListTable from './partials/GenreListTable'
 
 function DetailsTable({ result }) {
     return (

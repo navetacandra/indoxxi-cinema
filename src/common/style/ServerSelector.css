@@ -1,0 +1,8 @@
+.server-selector {
+    background-color: #0E3EDA;
+    text-align: center;
+    color: #fff;
+    padding: .8em;
+    border-radius: 1em;
+    cursor: pointer;
+}

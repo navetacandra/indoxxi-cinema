@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style/MovieCard.css';
+import '../style/MovieCard.css';
 
 function MovieCard({ id, title, img, year, rate, time, quality, type, eps }) {
     return (
@@ -12,16 +12,13 @@ function MovieCard({ id, title, img, year, rate, time, quality, type, eps }) {
                 <div className="card-body">
                     <div className="movie-title ms-1 mb-1">
                         <Link to={'/play' + id} style={{ textDecoration: 'none', color: '#000' }}>
-                            <span className="fs-5 text fw-bolder text-dark mb-2">{title}</span>
+                            <span className="fs-5 text fw-bolder text-dark mb-2">{title}
+                            <span className="fs-6 text-secondary"> ({year})</span></span>
                         </Link>
                     </div>
                     <div className="d-flex justify-content-end mb-1">
-                        <div className="col ms-1">
-                            <span className="fs-5 text text-secondary">{year}</span>
-                        </div>
-                        <div className="me-2" style={{ marginTop: '.2em' }}>
-                            <span className="fs-6 text fw-bolder text-primary">{rate}</span>
-                            <span className="fs-6 text fw-bolder text-dark">/10</span>
+                        <div className="me-2" style={{ marginTop: '-.3em', textShadow: '0 0 2px rgb(0 0 0 / 60%)' }}>
+                        <span className="ms-1" style={{ color: '#FFCD3C' }}>&#9733;</span>{` ${rate}`}
                         </div>
                     </div>
                     <div className="movie-duration d-flex justify-content-end mb-3" style={{ marginTop: '-.5em' }}>

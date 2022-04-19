@@ -1,11 +1,18 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import SearchResult from '../modules/SearchResult';
 
 function Search() {
 
+  let { keyword } = useParams();
+
   return (
     <>
-      <SearchResult />
+      {
+        keyword ? (
+          <SearchResult />
+        ) : null
+      }
     </>
   )
 }

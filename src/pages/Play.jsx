@@ -1,7 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { Fragment, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import GetEmbed from '../api-config/GetEmbed';
-import Details from '../modules/Details';
+import Loading from '../common/components/Loading';
+import EmbedPlayer from '../modules/EmbedPlayer';
+import MovieDetails from '../modules/MovieDetails';
+
+function Navigate({ to }) {
+    useNavigate()('/');
+    return (
+        <Fragment></Fragment>
+    )
+}
 
 function Play() {
     const [fetched, setFetched] = useState(false);
@@ -32,13 +41,24 @@ function Play() {
                     fetched ? (
                         data.result ? (
                             <>
-                                <Details result={data.result} />
+                                <EmbedPlayer result={data.result} />
+                                <MovieDetails result={data.result} />
                             </>
-                        ) : null
-                    ) : null
-                ) : (
-                    <h1>Hello World</h1>
-                )
+                        ) : (
+                            <div className="container mt-5">
+                                <div className="d-flex justify-content-center">
+                                    <h2>No movies found!</h2>
+                                </div>
+                            </div>
+                        )
+                    ) : (
+                        <div className="container mt-5">
+                            <div className="d-flex justify-content-center">
+                                <Loading />
+                            </div>
+                        </div>
+                    )
+                ) : <Navigate to={'/'} />
             }
         </>
     )

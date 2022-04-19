@@ -1,14 +1,14 @@
 import React from 'react'
 import DetailsTable from '../common/components/DetailsTable'
 
-function Details({ result }) {
+function MovieDetails({ result }) {
     return (
         <div className="container mt-5">
             <div className="d-flex justify-content-start">
-                <div className="col-md-2 me-5">
-                    <img src={result.thumbnail} alt="" />
+                <div className="col-md-2 me-4">
+                    <img src={result.thumbnail} alt={result.title + ' Poster'} />
                 </div>
-                <div className="col-md-10">
+                <div className="col-md-10 ms-2">
                     <h2>{result.title}</h2>
                     <h5 className="text-secondary">{result.year}</h5>
                 </div>
@@ -29,4 +29,4 @@ function Details({ result }) {
     )
 }
 
-export default Details
+export default MovieDetails

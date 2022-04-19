@@ -20,21 +20,21 @@ function Router() {
                 <Navbar />
                 <SearchInput />
             </>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/search" element={<Search />}>
-                    <Route path=":keyword" element={<Search />} />
-                    <Route path=":keyword/page" element={<Search />} />
-                    <Route path=":keyword/page/:page" element={<Search />} />
-                </Route>
-                <Route path="/play" element={<Play />}>
-                    <Route path=":type" element={<Play />} />
-                    <Route path=":type/:id" element={<Play />} />
-                </Route>
-            </Routes>
-            <>
-                <FooterPage />
-            </>
+            <div id="app" className="pb-3 mb-3" style={{ minHeight: '70vh' }}>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/search" element={<Search />}>
+                        <Route path=":keyword" element={<Search />} />
+                        <Route path=":keyword/page" element={<Search />} />
+                        <Route path=":keyword/page/:page" element={<Search />} />
+                    </Route>
+                    <Route path="/play" element={<Play />}>
+                        <Route path=":type" element={<Play />} />
+                        <Route path=":type/:id" element={<Play />} />
+                    </Route>
+                </Routes>
+            </div>
+            <FooterPage />
         </BrowserRouter>
     );
 };

@@ -6,10 +6,10 @@ import MovieCard from '../common/components/MovieCard';
 import ResultPagination from '../common/components/ResultPagination';
 
 function SearchResult() {
-    const [keyword, setKeyword] = useState('');
     const [fetched, setFetched] = useState(false);
     const [data, setData] = useState([]);
-    const [tempData, setTempData] = useState([]);
+    const [page, setPage] = useState(1);
+    const [result, setResult] = useState([]);
 
     const { pathname } = useLocation();
     const _keyword_ = useParams().keyword;
@@ -17,40 +17,34 @@ function SearchResult() {
     useEffect(() => {
 
         async function getSearch() {
-            setTempData(data);
-            // setData([]);
             setFetched(false);
-            setData(await _Search(keyword));
+            setData(await _Search(_keyword_));
             setFetched(true);
         }
 
-        if (pathname.startsWith('/search')) {
-            _keyword_ ? setKeyword(_keyword_) : setKeyword('');
-        }
-
-        if (keyword.trim()) {
+        if (_keyword_.trim()) {
             getSearch()
         }
-    }, [pathname, keyword])
+    }, [pathname, _keyword_])
 
     useEffect(() => {
-        console.log(data === tempData);
-        // setFetched(data[0] ? true : false);;
-    }, [data])
+        let limit = [page * 20 - 20, page * 20];
+        if (data && !!data.length) {
+            setResult(data.slice(limit[0], limit[1]));
+        }
+    }, [data, page])
 
     return (
         <>
             {
-                keyword ? (
+                _keyword_ ? (
                     fetched ? (
                         data && data[0] ? (
                             <div className="container">
-                                <div className="row justify-content-start">
-                                    <ResultPagination result={data} />
-                                </div>
+                                <ResultPagination className='mb-3' result={data} setPage={setPage} page={page} />
                                 <div className="row justify-content-start">
                                     {
-                                        data.map((val, key) => (
+                                        result.map((val, key) => (
                                             <MovieCard
                                                 id={val.link}
                                                 title={val.title}
@@ -66,6 +60,7 @@ function SearchResult() {
                                         ))
                                     }
                                 </div>
+                                <ResultPagination className='mt-3' result={data} setPage={setPage} page={page} />
                             </div>
                         ) : (
                             <div className="container">
@@ -79,7 +74,7 @@ function SearchResult() {
                             <div className="d-flex justify-content-center">
                                 <Loading />
                             </div>
-                        </div >
+                        </div>
                     )
                 ) : null
             }
