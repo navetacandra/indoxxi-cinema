@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom';
 import Loading from '../common/components/Loading';
-import _Search from '../utils/_Search';
+import GetSearch from '../api/GetSearch';
 import MovieCard from '../common/components/MovieCard';
 import ResultPagination from '../common/components/ResultPagination';
 
@@ -12,13 +12,15 @@ function SearchResult() {
     const [result, setResult] = useState([]);
 
     const { pathname } = useLocation();
-    const _keyword_ = useParams().keyword;
+    let params = useParams();
+    const _keyword_ = params.keyword;
 
     useEffect(() => {
 
         async function getSearch() {
             setFetched(false);
-            setData(await _Search(_keyword_));
+            let res = await GetSearch(_keyword_)
+            setData(res ? res.status === 'success' ? res.result : [] : []);
             setFetched(true);
         }
 
@@ -46,7 +48,7 @@ function SearchResult() {
                                     {
                                         result.map((val, key) => (
                                             <MovieCard
-                                                id={val.link}
+                                                id={'/' + val.id}
                                                 title={val.title}
                                                 img={val.img}
                                                 year={val.year}

@@ -1,4 +1,4 @@
-import CurrentAPI from "../utils/CurrentApi";
+import CurrentAPI from "./CurrentApi";
 
 /**
  * 

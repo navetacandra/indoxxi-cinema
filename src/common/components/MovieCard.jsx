@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../style/MovieCard.css';
 
-function MovieCard({ id, title, img, year, rate, time, quality, type, eps }) {
+function MovieCard({ id, title, img, year, rate, time, quality, type }) {
     return (
         <div className="col-md-3 col-sm-6 mb-3">
             <div className="card mb-3 me-2 movie-card">
@@ -28,17 +28,8 @@ function MovieCard({ id, title, img, year, rate, time, quality, type, eps }) {
                         {
                             type ? (
                                 <div className={"me-1 movie-badge badge-type-" + type.toLowerCase()}>
-                                    {type === 'film-seri' ? 'SERIES' : 'MOVIE'}
+                                    {type.toUpperCase()}
                                 </div>
-                            ) : null
-                        }
-                        {
-                            eps ? (
-                                Number(eps) ? (
-                                    <div className="me-1 movie-badge badge-eps">
-                                        {eps} Eps
-                                    </div>
-                                ) : null
                             ) : null
                         }
                         {

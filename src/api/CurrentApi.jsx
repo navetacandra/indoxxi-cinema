@@ -20,6 +20,7 @@ const CurrentAPI = async function () {
 
     active = await Promise.all(active);
     return active.filter(url => url !== undefined)[0];
+    // return 'http://localhost:5000'
 }
 
 export default CurrentAPI;

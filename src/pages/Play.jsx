@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import GetEmbed from '../api-config/GetEmbed';
+import GetEmbed from '../api/GetEmbed';
 import Loading from '../common/components/Loading';
 import EmbedPlayer from '../modules/EmbedPlayer';
 import MovieDetails from '../modules/MovieDetails';
 
 function Navigate({ to }) {
-    useNavigate()('/');
+    useNavigate()(to);
     return (
         <Fragment></Fragment>
     )
@@ -17,7 +17,7 @@ function Play() {
     const [data, setData] = useState({});
 
     let params = useParams();
-    let id = params.id ? `${params.type}/${params.id}` : '';
+    let id = params.id ? params.id : '';
 
     useEffect(() => {
         document.querySelector('#search-input').value = '';
@@ -30,7 +30,6 @@ function Play() {
         }
 
         FetchEmbed();
-
     }, [id])
 
 
@@ -58,7 +57,7 @@ function Play() {
                             </div>
                         </div>
                     )
-                ) : <Navigate to={'/'} />
+                ) : <Navigate to={'/search'} />
             }
         </>
     )

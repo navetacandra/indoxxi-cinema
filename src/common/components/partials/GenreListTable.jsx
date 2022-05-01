@@ -6,8 +6,8 @@ function GenreListTable({ genre_list }) {
         genre_list.map((val, key) => {
             return (
                 <Fragment key={key}>
-                    <Link to={process.env.PUBLIC_URL + '/genre/' + val} style={{ textDecoration: 'none', color: '#A46707' }}>
-                        {val}
+                    <Link to={process.env.PUBLIC_URL + '/genre/' + val.trim()} style={{ textDecoration: 'none', color: '#A46707' }}>
+                        {val.trim()}
                     </Link>
                     {key !== (genre_list.length - 1) ? ', ' : ''}
                 </Fragment>

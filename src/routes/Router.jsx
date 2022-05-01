@@ -12,6 +12,8 @@ import Search from "../pages/Search";
 import SearchInput from '../common/components/SearchInput';
 import Navbar from "../common/components/Navbar";
 import FooterPage from "../common/components/FooterPage";
+import Genre from "../pages/Genre";
+import Country from "../pages/Country";
 
 function Router() {
     return (
@@ -25,12 +27,15 @@ function Router() {
                     <Route path="/" element={<Home />} />
                     <Route path="/search" element={<Search />}>
                         <Route path=":keyword" element={<Search />} />
-                        <Route path=":keyword/page" element={<Search />} />
-                        <Route path=":keyword/page/:page" element={<Search />} />
                     </Route>
                     <Route path="/play" element={<Play />}>
-                        <Route path=":type" element={<Play />} />
-                        <Route path=":type/:id" element={<Play />} />
+                        <Route path=":id" element={<Play />} />
+                    </Route>
+                    <Route path="/genre" element={<Genre />}>
+                        <Route path=":genre" element={<Genre />} />
+                    </Route>
+                    <Route path="/country" element={<Country />}>
+                        <Route path=":country" element={<Country />} />
                     </Route>
                 </Routes>
             </div>

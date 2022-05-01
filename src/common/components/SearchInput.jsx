@@ -9,7 +9,7 @@ function SearchInput() {
 
     useEffect(() => {
         if(pathname.startsWith('/search')) {
-            document.querySelector('#search-input').value = decodeURI(_keyword_);
+            document.querySelector('#search-input').value = decodeURI(_keyword_).trim();
         } else {
             document.querySelector('#search-input').value = '';
         }
@@ -18,8 +18,8 @@ function SearchInput() {
     function Search() {
         let keyword = document.querySelector('#search-input').value.split('/')[0];
         if(keyword.trim() === '') return alert('Search input is required!');
-        document.querySelector('#search-input').value = keyword;
-        navigate(`/search/${encodeURI(keyword)}`)
+        document.querySelector('#search-input').value = keyword.trim();
+        navigate(`/search/${encodeURI(keyword.trim())}`)
     }
 
     function handleKeyUp(e) {

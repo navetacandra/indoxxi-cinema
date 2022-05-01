@@ -8,14 +8,22 @@ function Navbar() {
     useEffect(() => {
         if(pathname.startsWith('/')) setCurrent('Home');
         if(pathname.startsWith('/search')) setCurrent('Search');
+        if(pathname.startsWith('/country')) setCurrent('Country');
+        if(pathname.startsWith('/genre')) setCurrent('Genre');
+    }, [pathname])
+
+    useEffect(() => {
         let id = `#${current.toLowerCase() || 'home'}`;
 
         document.querySelectorAll('.nav-link').forEach(el => {
-            el.classList.remove('active')
+            if(el.innerText !== current) {
+                el.classList.remove('active')
+            } else {
+                el.classList.add('active')
+            }
         })
-
-        document.querySelector(id).classList.add('active')
-    }, [current, pathname])
+        console.log(current);
+    }, [current])
     
 
     return (
@@ -31,6 +39,12 @@ function Navbar() {
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
                             <Link className="nav-link" id="home" onClick={e => setCurrent(e.target.innerText)} to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" id="genre" onClick={e => setCurrent(e.target.innerText)} to="/genre">Genre</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" id="country" onClick={e => setCurrent(e.target.innerText)} to="/country">Country</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" id="search" onClick={e => setCurrent(e.target.innerText)} to="/search">Search</Link>

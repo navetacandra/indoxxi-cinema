@@ -17,7 +17,7 @@ function EmbedPlayer({ result }) {
     return (
         <div className="container mt-3 mb-3">
             {
-                link && !!link.length ? (
+                link && !!link.length && Array.isArray(link) ? (
                     <>
                         <div className="d-flex justify-content-center mb-5">
                             <iframe
